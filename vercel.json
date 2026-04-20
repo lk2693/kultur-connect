@@ -1,0 +1,13 @@
+{
+  "installCommand": "bun install",
+  "buildCommand": "bun run build",
+  "outputDirectory": "dist/client",
+  "functions": {
+    "api/[...all].mjs": {
+      "includeFiles": "dist/server/**"
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/[...all]" }
+  ]
+}
