@@ -239,39 +239,83 @@ function Index() {
           <div className="text-xs uppercase tracking-[0.3em] text-accent mb-3">Mitwirken</div>
           <h2 className="font-serif text-5xl md:text-6xl">Mitgliedschaft</h2>
         </div>
-        <div className="border border-border bg-card rounded-sm p-6 md:p-10 grid md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
-          <div className="aspect-square overflow-hidden rounded-sm">
-            <img
-              src={planImg}
-              alt="Kulturschaffende auf der Bühne"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div>
-            <div className="text-sm text-muted-foreground">kostenlos · jederzeit</div>
-            <h3 className="font-serif text-5xl mt-2">Kulturschaffend</h3>
-            <ul className="mt-8 space-y-4">
-              {[
-                "Eigenes Profil mit Sparte, Bio und Foto",
+        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {[
+            {
+              img: planImg,
+              alt: "Kulturschaffende auf der Bühne",
+              tag: "kostenlos · jederzeit",
+              title: "Kulturschaffend",
+              cta: "Mitglied werden",
+              perks: [
+                "Eigenes Profil mit Sparte & Bio",
                 "Veranstaltungen unbegrenzt veröffentlichen",
                 "Sichtbarkeit im öffentlichen Verzeichnis",
                 "Teil der Stimme des Kulturrats",
-              ].map((p) => (
-                <li key={p} className="flex items-start gap-3">
-                  <span className="text-accent mt-1">✓</span>
-                  <span className="text-foreground/90">{p}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10">
-              <Button asChild size="lg">
-                <Link to="/auth">Jetzt Mitglied werden →</Link>
-              </Button>
+              ],
+            },
+            {
+              img: planFoerdererImg,
+              alt: "Skizze auf einem Atelier-Tisch",
+              tag: "ab 5 € / Monat",
+              title: "Förderer",
+              cta: "Fördern",
+              perks: [
+                "Kultur sichtbar machen & unterstützen",
+                "Newsletter mit Einblicken & Programm",
+                "Vorab-Informationen zu Premieren",
+                "Förderer-Vermerk im Verzeichnis",
+              ],
+            },
+            {
+              img: planInstitutionImg,
+              alt: "Historischer Theatersaal",
+              tag: "auf Anfrage",
+              title: "Institution",
+              cta: "Anfragen",
+              perks: [
+                "Mehrere Profile unter einem Dach",
+                "Eigene Veranstaltungsreihen-Seite",
+                "Hervorhebung im Programm",
+                "Persönliche Betreuung durch den Rat",
+              ],
+            },
+          ].map((plan) => (
+            <div
+              key={plan.title}
+              className="border border-border bg-card rounded-sm p-5 flex flex-col"
+            >
+              <div className="aspect-[4/3] overflow-hidden rounded-sm">
+                <img
+                  src={plan.img}
+                  alt={plan.alt}
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="px-2 pt-6 pb-2 flex-1 flex flex-col">
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                  {plan.tag}
+                </div>
+                <h3 className="font-serif text-3xl mt-2">{plan.title}</h3>
+                <ul className="mt-6 space-y-3 flex-1">
+                  {plan.perks.map((p) => (
+                    <li key={p} className="flex items-start gap-3 text-sm">
+                      <span className="text-accent mt-0.5">✓</span>
+                      <span className="text-foreground/90">{p}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8">
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to="/auth">{plan.cta} →</Link>
+                  </Button>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
