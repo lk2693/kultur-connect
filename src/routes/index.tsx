@@ -239,7 +239,7 @@ function Index() {
           <div className="text-xs uppercase tracking-[0.3em] text-accent mb-3">Mitwirken</div>
           <h2 className="font-serif text-5xl md:text-6xl">Mitgliedschaft</h2>
         </div>
-        <div className="flex flex-col gap-8 max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {[
             {
               img: planImg,
@@ -280,38 +280,43 @@ function Index() {
                 "Persönliche Betreuung durch den Rat",
               ],
             },
-          ].map((plan) => (
+          ].map((plan, i) => (
             <div
               key={plan.title}
-              className="border border-border bg-card rounded-sm p-5 md:p-8 grid md:grid-cols-2 gap-8 items-center"
+              className="sticky"
+              style={{ top: `${100 + i * 24}px` }}
             >
-              <div className="aspect-[4/3] overflow-hidden rounded-sm">
-                <img
-                  src={plan.img}
-                  alt={plan.alt}
-                  width={1024}
-                  height={1024}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="flex flex-col">
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                  {plan.tag}
+              <div
+                className="border border-border bg-card rounded-sm p-5 md:p-8 grid md:grid-cols-2 gap-8 items-center shadow-[0_-8px_30px_-12px_rgba(0,0,0,0.08)] mb-8"
+              >
+                <div className="aspect-[4/3] overflow-hidden rounded-sm">
+                  <img
+                    src={plan.img}
+                    alt={plan.alt}
+                    width={1024}
+                    height={1024}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
-                <h3 className="font-serif text-4xl md:text-5xl mt-2">{plan.title}</h3>
-                <ul className="mt-6 space-y-3">
-                  {plan.perks.map((p) => (
-                    <li key={p} className="flex items-start gap-3">
-                      <span className="text-accent mt-1">✓</span>
-                      <span className="text-foreground/90">{p}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8">
-                  <Button asChild>
-                    <Link to="/auth">{plan.cta} →</Link>
-                  </Button>
+                <div className="flex flex-col">
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                    {plan.tag}
+                  </div>
+                  <h3 className="font-serif text-4xl md:text-5xl mt-2">{plan.title}</h3>
+                  <ul className="mt-6 space-y-3">
+                    {plan.perks.map((p) => (
+                      <li key={p} className="flex items-start gap-3">
+                        <span className="text-accent mt-1">✓</span>
+                        <span className="text-foreground/90">{p}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-8">
+                    <Button asChild>
+                      <Link to="/auth">{plan.cta} →</Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
