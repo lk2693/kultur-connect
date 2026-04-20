@@ -6,6 +6,8 @@ import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
 import heroImg from "@/assets/hero.jpg";
 import aboutImg from "@/assets/about-conversation.jpg";
 import planImg from "@/assets/plan-stage.jpg";
+import planFoerdererImg from "@/assets/plan-foerderer.jpg";
+import planInstitutionImg from "@/assets/plan-institution.jpg";
 import { sparteLabel } from "@/lib/sparten";
 
 export const Route = createFileRoute("/")({
