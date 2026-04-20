@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
 import heroImg from "@/assets/hero.jpg";
+import aboutImg from "@/assets/about-conversation.jpg";
 import { sparteLabel } from "@/lib/sparten";
 
 export const Route = createFileRoute("/")({
@@ -147,6 +148,49 @@ function Index() {
             ))}
           </div>
         )}
+      </section>
+
+      {/* MANIFEST / STATS */}
+      <section className="container mx-auto px-6 py-24">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7">
+            <div className="text-xs uppercase tracking-[0.3em] text-accent mb-4">Auftrag</div>
+            <p className="font-serif text-3xl md:text-5xl leading-[1.15] text-balance">
+              Von Nachwuchstalenten bis zu etablierten Stimmen — der Kulturrat schafft{" "}
+              <span className="text-muted-foreground">
+                Sichtbarkeit, Vernetzung und Räume, in denen Kultur entstehen darf.
+              </span>
+            </p>
+          </div>
+          <div className="lg:col-span-5">
+            <div className="aspect-[4/3] overflow-hidden rounded-sm">
+              <img
+                src={aboutImg}
+                alt="Zwei Kulturschaffende im Gespräch"
+                width={1280}
+                height={896}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6 mt-20">
+          {[
+            { n: "10+", label: "Sparten vertreten" },
+            { n: `${memberCount}+`, label: "Mitglieder" },
+            { n: "500+", label: "Veranstaltungen jährlich" },
+            { n: "365", label: "Tage Kultur" },
+          ].map((s) => (
+            <div key={s.label}>
+              <div className="border-t border-border pt-6">
+                <div className="font-serif text-5xl md:text-6xl tracking-tight">{s.n}</div>
+                <div className="text-sm text-muted-foreground mt-3">{s.label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* CTA */}
