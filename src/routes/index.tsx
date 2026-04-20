@@ -194,6 +194,85 @@ function Index() {
         )}
       </section>
 
+      {/* FEATURES */}
+      <section className="bg-secondary/40 border-y border-border">
+        <div className="container mx-auto px-6 py-24">
+          <div className="text-xs uppercase tracking-[0.3em] text-accent mb-3">Werkzeuge</div>
+          <h2 className="font-serif text-4xl md:text-5xl max-w-2xl text-balance">
+            Was die Plattform für dich tut.
+          </h2>
+          <div className="grid md:grid-cols-3 gap-12 mt-16">
+            {[
+              {
+                n: "01",
+                t: "Veranstaltungen veröffentlichen",
+                d: "Lege deine Events in Minuten an — mit Bild, Sparte, Ort und Ticket-Link. Sofort im öffentlichen Kalender sichtbar.",
+              },
+              {
+                n: "02",
+                t: "Mitglieder-Verzeichnis",
+                d: "Präsentiere dein Schaffen mit Profil, Bio und Foto. Andere finden dich über Sparte und Region.",
+              },
+              {
+                n: "03",
+                t: "Vernetzt mit der Szene",
+                d: "Werde Teil eines Verzeichnisses, das die Vielfalt der Kulturlandschaft sichtbar macht — sparten- und generationsübergreifend.",
+              },
+            ].map((f) => (
+              <div key={f.n} className="border-t border-foreground/20 pt-6">
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                  § {f.n}
+                </div>
+                <h3 className="font-serif text-2xl md:text-3xl mt-3 leading-tight">{f.t}</h3>
+                <p className="text-muted-foreground mt-4 leading-relaxed">{f.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MEMBERSHIP */}
+      <section className="container mx-auto px-6 py-24">
+        <div className="text-center mb-16">
+          <div className="text-xs uppercase tracking-[0.3em] text-accent mb-3">Mitwirken</div>
+          <h2 className="font-serif text-5xl md:text-6xl">Mitgliedschaft</h2>
+        </div>
+        <div className="border border-border bg-card rounded-sm p-6 md:p-10 grid md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
+          <div className="aspect-square overflow-hidden rounded-sm">
+            <img
+              src={planImg}
+              alt="Kulturschaffende auf der Bühne"
+              width={1024}
+              height={1024}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div>
+            <div className="text-sm text-muted-foreground">kostenlos · jederzeit</div>
+            <h3 className="font-serif text-5xl mt-2">Kulturschaffend</h3>
+            <ul className="mt-8 space-y-4">
+              {[
+                "Eigenes Profil mit Sparte, Bio und Foto",
+                "Veranstaltungen unbegrenzt veröffentlichen",
+                "Sichtbarkeit im öffentlichen Verzeichnis",
+                "Teil der Stimme des Kulturrats",
+              ].map((p) => (
+                <li key={p} className="flex items-start gap-3">
+                  <span className="text-accent mt-1">✓</span>
+                  <span className="text-foreground/90">{p}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10">
+              <Button asChild size="lg">
+                <Link to="/auth">Jetzt Mitglied werden →</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
