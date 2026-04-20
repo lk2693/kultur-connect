@@ -325,6 +325,9 @@ function Index() {
         </div>
       </section>
 
+      {/* STORIES */}
+      <StoryScroll />
+
       {/* CTA */}
       <section className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
