@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
+import { StoryScroll } from "@/components/StoryScroll";
 import heroImg from "@/assets/hero.jpg";
 import aboutImg from "@/assets/about-conversation.jpg";
 import planImg from "@/assets/plan-stage.jpg";
