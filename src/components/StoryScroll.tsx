@@ -40,8 +40,8 @@ export function StoryScroll() {
       const progress = Math.min(Math.max(-rect.top / total, 0), 0.999);
       setActive(Math.floor(progress * stories.length));
     };
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
