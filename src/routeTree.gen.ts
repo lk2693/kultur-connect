@@ -9,38 +9,154 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VeranstaltungenRouteImport } from './routes/veranstaltungen'
+import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
+import { Route as ProfilRouteImport } from './routes/profil'
+import { Route as MitgliederRouteImport } from './routes/mitglieder'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VeranstaltungenNeuRouteImport } from './routes/veranstaltungen.neu'
 
+const VeranstaltungenRoute = VeranstaltungenRouteImport.update({
+  id: '/veranstaltungen',
+  path: '/veranstaltungen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UeberUnsRoute = UeberUnsRouteImport.update({
+  id: '/ueber-uns',
+  path: '/ueber-uns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfilRoute = ProfilRouteImport.update({
+  id: '/profil',
+  path: '/profil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MitgliederRoute = MitgliederRouteImport.update({
+  id: '/mitglieder',
+  path: '/mitglieder',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VeranstaltungenNeuRoute = VeranstaltungenNeuRouteImport.update({
+  id: '/neu',
+  path: '/neu',
+  getParentRoute: () => VeranstaltungenRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/mitglieder': typeof MitgliederRoute
+  '/profil': typeof ProfilRoute
+  '/ueber-uns': typeof UeberUnsRoute
+  '/veranstaltungen': typeof VeranstaltungenRouteWithChildren
+  '/veranstaltungen/neu': typeof VeranstaltungenNeuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/mitglieder': typeof MitgliederRoute
+  '/profil': typeof ProfilRoute
+  '/ueber-uns': typeof UeberUnsRoute
+  '/veranstaltungen': typeof VeranstaltungenRouteWithChildren
+  '/veranstaltungen/neu': typeof VeranstaltungenNeuRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/mitglieder': typeof MitgliederRoute
+  '/profil': typeof ProfilRoute
+  '/ueber-uns': typeof UeberUnsRoute
+  '/veranstaltungen': typeof VeranstaltungenRouteWithChildren
+  '/veranstaltungen/neu': typeof VeranstaltungenNeuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/mitglieder'
+    | '/profil'
+    | '/ueber-uns'
+    | '/veranstaltungen'
+    | '/veranstaltungen/neu'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/mitglieder'
+    | '/profil'
+    | '/ueber-uns'
+    | '/veranstaltungen'
+    | '/veranstaltungen/neu'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/mitglieder'
+    | '/profil'
+    | '/ueber-uns'
+    | '/veranstaltungen'
+    | '/veranstaltungen/neu'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  MitgliederRoute: typeof MitgliederRoute
+  ProfilRoute: typeof ProfilRoute
+  UeberUnsRoute: typeof UeberUnsRoute
+  VeranstaltungenRoute: typeof VeranstaltungenRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/veranstaltungen': {
+      id: '/veranstaltungen'
+      path: '/veranstaltungen'
+      fullPath: '/veranstaltungen'
+      preLoaderRoute: typeof VeranstaltungenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ueber-uns': {
+      id: '/ueber-uns'
+      path: '/ueber-uns'
+      fullPath: '/ueber-uns'
+      preLoaderRoute: typeof UeberUnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profil': {
+      id: '/profil'
+      path: '/profil'
+      fullPath: '/profil'
+      preLoaderRoute: typeof ProfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mitglieder': {
+      id: '/mitglieder'
+      path: '/mitglieder'
+      fullPath: '/mitglieder'
+      preLoaderRoute: typeof MitgliederRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,12 +164,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/veranstaltungen/neu': {
+      id: '/veranstaltungen/neu'
+      path: '/neu'
+      fullPath: '/veranstaltungen/neu'
+      preLoaderRoute: typeof VeranstaltungenNeuRouteImport
+      parentRoute: typeof VeranstaltungenRoute
+    }
   }
 }
 
+interface VeranstaltungenRouteChildren {
+  VeranstaltungenNeuRoute: typeof VeranstaltungenNeuRoute
+}
+
+const VeranstaltungenRouteChildren: VeranstaltungenRouteChildren = {
+  VeranstaltungenNeuRoute: VeranstaltungenNeuRoute,
+}
+
+const VeranstaltungenRouteWithChildren = VeranstaltungenRoute._addFileChildren(
+  VeranstaltungenRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  MitgliederRoute: MitgliederRoute,
+  ProfilRoute: ProfilRoute,
+  UeberUnsRoute: UeberUnsRoute,
+  VeranstaltungenRoute: VeranstaltungenRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
