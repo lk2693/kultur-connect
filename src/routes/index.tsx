@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
 import heroImg from "@/assets/hero.jpg";
 import aboutImg from "@/assets/about-conversation.jpg";
+import planImg from "@/assets/plan-stage.jpg";
 import { sparteLabel } from "@/lib/sparten";
 
 export const Route = createFileRoute("/")({
