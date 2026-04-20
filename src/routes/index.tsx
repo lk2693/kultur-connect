@@ -239,7 +239,7 @@ function Index() {
           <div className="text-xs uppercase tracking-[0.3em] text-accent mb-3">Mitwirken</div>
           <h2 className="font-serif text-5xl md:text-6xl">Mitgliedschaft</h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="flex flex-col gap-8 max-w-5xl mx-auto">
           {[
             {
               img: planImg,
@@ -283,7 +283,7 @@ function Index() {
           ].map((plan) => (
             <div
               key={plan.title}
-              className="border border-border bg-card rounded-sm p-5 flex flex-col"
+              className="border border-border bg-card rounded-sm p-5 md:p-8 grid md:grid-cols-2 gap-8 items-center"
             >
               <div className="aspect-[4/3] overflow-hidden rounded-sm">
                 <img
@@ -295,21 +295,21 @@ function Index() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="px-2 pt-6 pb-2 flex-1 flex flex-col">
+              <div className="flex flex-col">
                 <div className="text-xs uppercase tracking-widest text-muted-foreground">
                   {plan.tag}
                 </div>
-                <h3 className="font-serif text-3xl mt-2">{plan.title}</h3>
-                <ul className="mt-6 space-y-3 flex-1">
+                <h3 className="font-serif text-4xl md:text-5xl mt-2">{plan.title}</h3>
+                <ul className="mt-6 space-y-3">
                   {plan.perks.map((p) => (
-                    <li key={p} className="flex items-start gap-3 text-sm">
-                      <span className="text-accent mt-0.5">✓</span>
+                    <li key={p} className="flex items-start gap-3">
+                      <span className="text-accent mt-1">✓</span>
                       <span className="text-foreground/90">{p}</span>
                     </li>
                   ))}
                 </ul>
                 <div className="mt-8">
-                  <Button asChild variant="outline" className="w-full">
+                  <Button asChild>
                     <Link to="/auth">{plan.cta} →</Link>
                   </Button>
                 </div>
